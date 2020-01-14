@@ -55,16 +55,16 @@ class App extends React.Component {
     });
   };
 
-  // addTodo = todoName => {
-  //   const newTodo = {
-  //     name: todoName,
-  //     id: Date.now(),
-  //     completed: false
-  //   };
-  //   this.setState({
-  //     todoList: [...this.state.todoList, todoName]
-  //   });
-  // };
+  addTodo = todoName => {
+    const newTodo = {
+      name: todoName,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todoList: [...this.state.todoList, newTodo]
+    });
+  };
 
   render() {
     console.log("rendering...");
@@ -72,7 +72,7 @@ class App extends React.Component {
       <div className="App">
         <div className="header">
           <h2>Todo App </h2>
-          <TodoForm />
+          <TodoForm addTodo={this.addTodo} />
         </div>
         <TodoList todos={this.state.todoList} toggleTodo={this.toggleTodo} />
       </div>
