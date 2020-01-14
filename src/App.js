@@ -7,22 +7,22 @@ import TodoForm from "./components/TodoComponents/TodoForm";
 const todos = [
   {
     name: "Learn React",
-    id: Date.now(),
+    id: 1,
     completed: false
   },
   {
     name: "Clean room",
-    id: Date.now(),
+    id: 2,
     completed: false
   },
   {
     name: "Go to store",
-    id: Date.now(),
+    id: 3,
     completed: false
   },
   {
     name: "Cook dinner",
-    id: Date.now(),
+    id: 4,
     completed: false
   }
 ];
@@ -66,6 +66,12 @@ class App extends React.Component {
     });
   };
 
+  clearCompleted = todo => {
+    this.setState({
+      todoList: this.state.todoList.filter(todo => !todo.completed)
+    });
+  };
+
   render() {
     console.log("rendering...");
     return (
@@ -74,7 +80,11 @@ class App extends React.Component {
           <h2>Todo App </h2>
           <TodoForm addTodo={this.addTodo} />
         </div>
-        <TodoList todos={this.state.todoList} toggleTodo={this.toggleTodo} />
+        <TodoList
+          todos={this.state.todoList}
+          toggleTodo={this.toggleTodo}
+          clearCompleted={this.clearCompleted}
+        />
       </div>
     );
   }
