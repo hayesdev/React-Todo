@@ -10,13 +10,16 @@ class TodoForm extends React.Component {
   }
 
   handleChanges = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({ todoText: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.addTodo(this.state.todoText);
+
+    // this sets state to an empty string to clear the form!!
+    this.setState({ todoText: "" });
   };
 
   render() {
